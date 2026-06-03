@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const cors = require("cors");
 const {
   createTransporter,
   sendEmail,
@@ -10,27 +9,6 @@ const {
 } = require("./mailer");
 
 const app = express();
-
-const defaultOrigins = [
-  "https://rsi-eng.com.br",
-  "https://www.rsi-eng.com.br",
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-];
-const corsOrigins = process.env.CORS_ORIGINS
-  ? process.env.CORS_ORIGINS.split(",").map((o) => o.trim()).filter(Boolean)
-  : defaultOrigins;
-
-app.use(
-  cors({
-    origin(origin, callback) {
-      if (!origin || corsOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      return callback(new Error("Origem não permitida pelo CORS"));
-    },
-  })
-);
 app.use(express.json({ limit: "1mb" }));
 
 const PORT = Number(process.env.PORT) || 5001;
