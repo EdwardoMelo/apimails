@@ -1,0 +1,18 @@
+{
+  "name": "api-emails",
+  "version": "1.0.0",
+  "description": "API centralizadora de envio de e-mails via SMTP",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.3"
+  }
+}
